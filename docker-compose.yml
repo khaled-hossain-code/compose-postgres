@@ -41,6 +41,20 @@ services:
     volumes:
       - redis:/data
     restart: unless-stopped
+  
+  mongoDB:
+    container_name: mongoDB_container
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    networks:
+      - postgres
+    volumes:
+      - mongodb:/data/db
+    restart: unless-stopped    
 
 networks:
   postgres:
@@ -50,3 +64,4 @@ volumes:
     postgres:
     pgadmin:
     redis:
+    mongodb:
