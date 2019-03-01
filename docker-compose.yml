@@ -40,6 +40,7 @@ services:
       - postgres
     volumes:
       - redis:/data
+    restart: unless-stopped
 
 networks:
   postgres:
